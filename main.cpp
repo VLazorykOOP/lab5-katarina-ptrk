@@ -126,25 +126,11 @@ public:
               << ", Course: " << course_ << ", Average mark: " << average_mark_
               << std::endl;
   }
+//  !!!  
+  friend std::ostream &operator<<(std::ostream &os, const Student &student);
+ friend std::istream &operator>>(std::istream &is, Student &student);
 
-  friend std::ostream &operator<<(std::ostream &os, const Student &student) {
-    os << "Name: " << student.name_ << ", Surname: " << student.surname_
-       << ", Course: " << student.course_
-       << ", Average mark: " << student.average_mark_;
-    return os;
-  }
-
-  friend std::istream &operator>>(std::istream &is, Student &student) {
-    std::cout << "Enter name: ";
-    is >> student.name_;
-    std::cout << "Enter surname: ";
-    is >> student.surname_;
-    std::cout << "Enter course: ";
-    is >> student.course_;
-    std::cout << "Enter average mark: ";
-    is >> student.average_mark_;
-    return is;
-  }
+  
 
   Student(const Student &other)
       : name_(other.name_), surname_(other.surname_), course_(other.course_),
@@ -216,7 +202,24 @@ public:
 
   virtual ~DiplomaStudent() {}
 };
-
+///  !!!!!
+  std::ostream &operator<<(std::ostream &os, const Student &student) {
+    os << "Name: " << student.name_ << ", Surname: " << student.surname_
+       << ", Course: " << student.course_
+       << ", Average mark: " << student.average_mark_;
+    return os;
+  }
+std::istream &operator>>(std::istream &is, Student &student) {
+    std::cout << "Enter name: ";
+    is >> student.name_;
+    std::cout << "Enter surname: ";
+    is >> student.surname_;
+    std::cout << "Enter course: ";
+    is >> student.course_;
+    std::cout << "Enter average mark: ";
+    is >> student.average_mark_;
+    return is;
+  }
 int main() {
   cout << "---TASK 1---" << endl;
   Human human1("Ivan", "Ivanov", "Ivanovych", 25, 75.5);
